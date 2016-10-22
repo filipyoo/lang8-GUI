@@ -2,7 +2,6 @@
 # The lang8progGUI.vbs is a file to launch a .bat file without opening a terminal Windows 
 # Each entry is stored in a .txt file with a number, the most recent has the greatest number
 # pyuic5 -x lang8UI.ui -o lang8UI.py
-import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from lang8UI import Ui_Dialog
 import os, sys
