@@ -1,5 +1,6 @@
 # GUI program to read yamasv's entries from lang8, whose entries were scraped by the program in scrapeLang8.py file
 # The lang8progGUI.vbs is a file to launch a .bat file without opening a terminal Windows 
+# Each entry is stored in a .txt file with a number, the most recent has the greatest number
 # pyuic5 -x lang8UI.ui -o lang8UI.py
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
