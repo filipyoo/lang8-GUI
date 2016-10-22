@@ -7,20 +7,20 @@ import webbrowser, requests, bs4, sys, os, time
 # connection parameters
 # ----------------------------------------------------------------------
 proxies = {
-  'http': 'http://LU10600:fantasynoki0_@www-deny.wrc.melco.co.jp:9515',
-  'https': 'http://LU10600:fantasynoki0_@www-deny.wrc.melco.co.jp:9515' #https is used and not http
+  'http': 'http://username:password@proxyAddress',
+  'https': 'http://username:password@proxyAddress', #https is used and not http
 }
 
-myUserName = "philippe_khin@hotmail.fr"
-myPassword = "fantasynoki0"
+myUserName = ""
+myPassword = ""
 
 login_url = "https://lang-8.com/login"
 yamasvPage = "http://lang-8.com/605858/journals?page="
 
 service_args = [
-    '--proxy=www-deny.wrc.melco.co.jp:9515',
+    '--proxy=proxyAddress',
     '--proxy-type=https',
-    '--proxy-auth=LU10600:fantasynoki0_'
+    '--proxy-auth=username:password'
     ]
 # ----------------------------------------------------------------------
 
