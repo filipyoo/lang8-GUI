@@ -1,2 +1,11 @@
 # lang8GUI
-GUI program to display yamasv's entries from lang8.com 
+
+Web scraping and GUI program to get posts of a user from Lang8.com and display them on a PyQt GUI.
+
+For detailed explanation, please refer to my blog post :  
+http://www.filipyoo.com/web-scraping-get-posts-favourite-user-website-python/  
+http://www.filipyoo.com/create-gui-read-lang8-webscraped-posts-using-python-pyqt/  
+
+<p align="center">
+  <img src="http://www.filipyoo.com/images_uploaded/2016/12/04/lang8_004_RoaMeGE.png" alt="lang8 gui"/>
+</p>
