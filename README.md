@@ -1,4 +1,4 @@
-# lang8GUI
+# lang8 GUI
 
 Web scraping and GUI program to get posts of a user from Lang8.com and display them on a PyQt GUI.
 
