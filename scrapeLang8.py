@@ -4,26 +4,8 @@ from requests.auth import HTTPBasicAuth
 import webbrowser, requests, bs4, sys, os, time
 
 
-# connection parameters
-# ----------------------------------------------------------------------
-proxies = {
-  'http': 'http://username:password@proxyAddress',
-  'https': 'http://username:password@proxyAddress', #https is used and not http
-}
-
-myUserName = ""
-myPassword = ""
-
 login_url = "https://lang-8.com/login"
 yamasvPage = "http://lang-8.com/605858/journals?page="
-
-service_args = [
-    '--proxy=proxyAddress',
-    '--proxy-type=https',
-    '--proxy-auth=username:password'
-    ]
-# ----------------------------------------------------------------------
-
 
 
 def login(browser, login_url):
@@ -39,8 +21,6 @@ def login(browser, login_url):
 	# without waiting, the website doesn't have time to log in et register the information.
 
 
-
-
 # ----------------------------------------- MAIN ----------------------------------------------------
 
 #USING PHANTOMJS for headless browsing (without opening a mozilla window)
@@ -50,50 +30,29 @@ browser = webdriver.PhantomJS(r"C:\Program Files\phantomjs-2.1.1-windows\bin\pha
 # LOG in lang8
 login(browser, login_url)
 
-entry_index = 1441 # from 1 to 14xx...
-first_page = 1 
-last_page = 4 # when he starts explaining Japanese usages
+entry_index = 1 # from 1 to 14xx...
+first_page  = 1 
+last_page   = 10 # when he starts explaining Japanese usages
 
 print ("Start downloading....\n")
 for page_index in reversed(range(first_page, last_page+1)):
 	print ("Now downloading page: " + str(page_index))
 	browser.get(yamasvPage + str(page_index))
-	# time.sleep(3)	
 	entries_page = browser.page_source
-	soup = bs4.BeautifulSoup(entries_page,"lxml")
-	# f = open("ok.txt", "w", encoding="utf-8")
-	# f.write(str(soup))
+	soup         = bs4.BeautifulSoup(entries_page,"lxml")
 	entries_elem = soup.select('.journal_title a')
 	for entry in reversed(entries_elem):
-		entry_link = entry.get("href")
+		entry_link  = entry.get("href")
 		browser.get(entry_link)
-		# time.sleep(3)	
-		entry_page = browser.page_source
-		soup = bs4.BeautifulSoup(entry_page,"lxml")
-		# f = open("okok.txt", "w", encoding="utf-8")
-		# f.write(str(soup))
-		entry_text = soup.select('#body_show_ori')
-		# print (type(entry_text))
-		# print (str(entry_text[0]))
-		entry_text = str(entry_text[0]).replace("<div id=\"body_show_ori\">", "").replace("</div>","").replace("<br/>","\n")
-		# print (entry_text)
-		f = open("yamasvEntries\\" +str(entry_index)+ ".txt","w", encoding="utf-8")
+		entry_page  = browser.page_source
+		soup        = bs4.BeautifulSoup(entry_page,"lxml")
+		entry_text  = soup.select('#body_show_ori')
+		entry_text  = str(entry_text[0]).replace("<div id=\"body_show_ori\">", "").replace("</div>","").replace("<br/>","\n")
+		f           = open("yamasvEntries\\" + str(entry_index) + ".txt","w", encoding="utf-8")
 		f.write(entry_text)
 		f.close()
-		entry_index += 1
+		entry_index = entry_index + 1
 
 
-print ("\n----------------------------------\nDONE downloaded all entries.\n")
-
-
-
-
-
-# TODO :
-# OK -- interesting posts are from the 76th page
-# DONE -- put each entry in a file (so totalFile = 20*76)
-# DONE -- name them with a number (1 to 14xx...)
-# another script to check out if yamasv has posted new entry, by checking the entry date (class .journal_date)
-# if yes, download it and put in new file, with the latest number as a name
-# implement GUI, with next/previous entry button, and random button, update new entry...
-# DONE -- loop over page and entries reversly to get the most recent entry with the biggest number of entry_index
+print ("\n----------------------------------\n")
+print("DONE downloaded all entries.\n")
