@@ -7,5 +7,5 @@ http://www.filipyoo.com/web-scraping-get-posts-favourite-user-website-python/
 http://www.filipyoo.com/create-gui-read-lang8-webscraped-posts-using-python-pyqt/  
 
 <p align="center">
-  <img src="http://www.filipyoo.com/images_uploaded/2016/12/04/lang8_004_RoaMeGE.png" alt="lang8 gui"/>
+  <img src="https://github.com/filipyoo/lang8GUI/blob/master/lang8_gui.png" alt="lang8 gui"/>
 </p>
